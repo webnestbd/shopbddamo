@@ -457,7 +457,7 @@ input:focus,select:focus,textarea:focus{border-color:var(--primary)}
 <div class="admin-sidebar" id="adminSidebar">
 <div class="admin-sidebar-header">
 <img id="sidebarLogo" src="">
-<h3>ASHIK Shop BD Damo</h3>
+<h3>Shop BD Damo</h3>
 <p>Admin Panel</p>
 </div>
 <div class="admin-nav">
@@ -801,11 +801,11 @@ notify:true
 },
 whatsapp: {
 number:'+8801878877746',
-message:'হ্যালো ASHIK DIGITAL MARKETING! আমি আপনার সার্ভিস সম্পর্কে জানতে চাই।'
+message:'হ্যালো Shop BD! আমি আপনার সার্ভিস সম্পর্কে জানতে চাই।'
 }
 };
 
-let cart = JSON.parse(localStorage.getItem('ashikCart')||'[]');
+let cart = JSON.parse(localStorage.getItem('shopbdCart')||'[]');
 let selectedCategory = null;
 let currentSlide = 0;
 let detailQty = 1;
@@ -816,16 +816,16 @@ let isSubAdmin = false;
 let currentUser = '';
 
 function getData(){
-let d = localStorage.getItem('ashikData');
+let d = localStorage.getItem('shopbdkData');
 if(!d){
 let init=JSON.parse(JSON.stringify(DEFAULT_DATA));
-localStorage.setItem('ashikData',JSON.stringify(init));
+localStorage.setItem('shopbdData',JSON.stringify(init));
 return init;
 }
 return JSON.parse(d);
 }
-function saveData(d){localStorage.setItem('ashikData',JSON.stringify(d))}
-function saveCart(){localStorage.setItem('ashikCart',JSON.stringify(cart));updateCartCount()}
+function saveData(d){localStorage.setItem('shopbd',JSON.stringify(d))}
+function saveCart(){localStorage.setItem('shopbdkCart',JSON.stringify(cart));updateCartCount()}
 function updateCartCount(){document.getElementById('cartCount').textContent=cart.reduce((a,b)=>a+b.qty,0)}
 
 function showToast(msg,type){
@@ -1709,7 +1709,7 @@ let d=getData();
 if(!d.telegram.botToken||!d.telegram.chatId){showToast('Token ও Chat ID দিন','error');return}
 fetch('https://api.telegram.org/bot'+d.telegram.botToken+'/sendMessage',{
 method:'POST',headers:{'Content-Type':'application/json'},
-body:JSON.stringify({chat_id:d.telegram.chatId,text:'✅ টেস্ট মেসেজ! ASHIK DIGITAL MARKETING - বট সফলভাবে সংযুক্ত হয়েছে।'})
+body:JSON.stringify({chat_id:d.telegram.chatId,text:'✅ টেস্ট মেসেজ! Shop BD- বট সফলভাবে সংযুক্ত হয়েছে।'})
 }).then(r=>r.json()).then(r=>{
 if(r.ok)showToast('পাঠানো হয়েছে ✅');
 else showToast('এরর: '+r.description,'error');
